@@ -3,8 +3,8 @@
 { config, pkgs, ... }:
 
 let
-  wallpaper = "/home/tdmunnik/nix-config/modules/backgrounds";
-  wallpaperFile = "the-king-is-coming-newspaper.jpg";
+  wallpaperPath = "/home/tdmunnik/nix-config/modules/backgrounds";
+  wallpaperFile = "armand-serrano-noahsark.jpg";
   fullPath = "${wallpaperPath}/${wallpaperFile}";
 in
 {

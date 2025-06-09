@@ -5,6 +5,7 @@
   imports = [
     ./modules/waybar/waybar.nix
     ./modules/hypr/hyprpaper.nix
+    ./modules/kitty/kitty.nix
   ];
 
   home.username = "tdmunnik";
@@ -21,17 +22,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./modules/hypr/hyprland.conf;
-  };
-
-  programs = {
-    # dunst.enable = true;
-
-    kitty = {
-      enable = true;
-      # Optional: configFile = ./kitty.conf;
-    };
-
-    # wlClipboard.enable = true;
   };
 
   programs.wofi = {
@@ -55,6 +45,12 @@
     pavucontrol
     networkmanager
     obsidian
+
+    spotify
+
+    # Fonts
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;
