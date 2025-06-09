@@ -10,23 +10,32 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: {
-    nixosConfigurations = {
-      Marvin = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-	modules = [
-	  ./configuration.nix
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: 
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+	config.allowUnfree = true;
+      };
+    in {
+      nixosConfigurations = {
+        Marvin = nixpkgs.lib.nixosSystem {
+	  inherit system;
+          modules = [
+            ./configuration.nix
+	    {
+	      nixpkgs.config.allowUnfree = true;
+	    }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.tdmunnik = import ./home.nix;
+            }
 
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users.tdmunnik = import ./home.nix;
-	  }
-
-	  hyprland.nixosModules.default
-	];
+            hyprland.nixosModules.default
+          ];
+        };
       };
     };
-  };
 }

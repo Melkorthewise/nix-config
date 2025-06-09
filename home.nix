@@ -4,6 +4,7 @@
 {
   imports = [
     ./modules/waybar/waybar.nix
+    ./modules/hypr/hyprpaper.nix
   ];
 
   home.username = "tdmunnik";
@@ -44,8 +45,7 @@
       term = "kitty";  # or your preferred terminal
     };
   };
-
-
+  
   home.packages = with pkgs; [
     neofetch
     fzf
@@ -54,6 +54,7 @@
     hyprpaper
     pavucontrol
     networkmanager
+    obsidian
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;

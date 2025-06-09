@@ -43,6 +43,7 @@
     blueman
     pipewire
     wofi
+    hyprpaper
   ];
 
   services.xserver.enable = true;
