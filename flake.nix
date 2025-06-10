@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, zen-browser, ... }@inputs: 
