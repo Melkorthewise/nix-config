@@ -24,6 +24,13 @@
     extraConfig = builtins.readFile ./modules/hypr/hyprland.conf;
   };
 
+  programs.hyprlock = {
+    enable = true;
+    extrConfig = builtins.readFile ./modules/hypr/lockscreen.conf;
+  };
+
+
+
   programs.wofi = {
     enable = true;
     settings = {

@@ -44,10 +44,12 @@
     pipewire
     wofi
     hyprpaper
+    hyprlock
   ];
 
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.enable = true;
+  services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
   hardware.bluetooth.enable = true;
