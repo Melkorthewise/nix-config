@@ -1,5 +1,5 @@
 # nix-config/configuration.nix
-{ config, pkgs, ... }:
+{ config, pkgs, zenBrowser, system, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -51,7 +51,12 @@
     docker-compose
     networkmanager
     gcc
+    unzip
+
+    zenBrowser.packages."${system}".specific
   ];
+
+  virtualisation.docker.enable = true;
 
   services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;

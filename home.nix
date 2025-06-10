@@ -54,6 +54,9 @@
     
     obsidian
     spotify
+    discord
+
+    nodejs
 
     # Fonts
     nerd-fonts.fira-code
