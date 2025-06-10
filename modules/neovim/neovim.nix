@@ -8,6 +8,6 @@
     viAlias = true;
     vimAlias = true;
 
-    extraConfig = builtins.readFile ./modules/neovim/init.lua;
+    extraLuaConfig = builtins.readFile ./init.lua;
   };
 }

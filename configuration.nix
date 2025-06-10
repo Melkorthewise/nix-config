@@ -50,6 +50,7 @@
     docker
     docker-compose
     networkmanager
+    gcc
   ];
 
   services.xserver.enable = true;
