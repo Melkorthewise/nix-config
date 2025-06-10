@@ -7,13 +7,14 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "Marvin";
+  networking.networkmanager.enable = true;
   time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   users.users.tdmunnik = {
     isNormalUser = true;
     description = "Thomas de Munnik";
-    extraGroups = [ "wheel" "networkmanager" "bluetooth" ];
+    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" ];
   };
 
   fileSystems."/" = {
@@ -45,6 +46,10 @@
     wofi
     hyprpaper
     hyprlock
+    playerctl
+    docker
+    docker-compose
+    networkmanager
   ];
 
   services.xserver.enable = true;

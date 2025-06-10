@@ -6,6 +6,7 @@
     ./modules/waybar/waybar.nix
     ./modules/hypr/hyprpaper.nix
     ./modules/kitty/kitty.nix
+    ./modules/neovim/neovim.nix
   ];
 
   home.username = "tdmunnik";
@@ -26,10 +27,8 @@
 
   programs.hyprlock = {
     enable = true;
-    extrConfig = builtins.readFile ./modules/hypr/lockscreen.conf;
+    extraConfig = builtins.readFile ./modules/hypr/lockscreen.conf;
   };
-
-
 
   programs.wofi = {
     enable = true;
@@ -42,7 +41,7 @@
       term = "kitty";  # or your preferred terminal
     };
   };
-  
+
   home.packages = with pkgs; [
     neofetch
     fzf
@@ -50,9 +49,10 @@
     waybar
     hyprpaper
     pavucontrol
-    networkmanager
+    docker
+    docker-compose 
+    
     obsidian
-
     spotify
 
     # Fonts
