@@ -32,7 +32,14 @@
 
   programs.hyprland.enable = true;
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "amdgpu" ];
+    xkb = {
+      layout = "us";
+      options = "compose:win,caps:escape";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     git
@@ -60,7 +67,6 @@
 
   virtualisation.docker.enable = true;
 
-  services.xserver.enable = true;
   # services.displayManager.sddm.enable = true;
   services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
