@@ -1,10 +1,10 @@
-# nix-config/home.nix
+#nix-config/home.nix
 { config, pkgs, ... }:
 
 {
   imports = [
     ./modules/waybar/waybar.nix
-    ./modules/hypr/hyprpaper.nix
+    ./modules/hypr/wallpaper.nix
     ./modules/kitty/kitty.nix
     ./modules/neovim/neovim.nix
   ];
@@ -45,7 +45,7 @@
   home.packages = with pkgs; [
     neofetch
     fzf
-    firefox
+    tmux
     waybar
     hyprpaper
     pavucontrol
@@ -56,6 +56,8 @@
     spotify
     discord
 
+    libreoffice
+
     nodejs
 
     # Fonts
@@ -64,6 +66,11 @@
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;
+
+  home.keyboard = {
+    layout = "us";
+    options = [ "compose:win" ];
+  };
 
   home.stateVersion = "24.11";
 }

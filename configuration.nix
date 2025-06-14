@@ -52,8 +52,10 @@
     networkmanager
     gcc
     unzip
+    python3
+    ripgrep
 
-    zenBrowser.packages."${system}".specific
+    zenBrowser.packages."${system}".default
   ];
 
   virtualisation.docker.enable = true;
@@ -62,6 +64,8 @@
   # services.displayManager.sddm.enable = true;
   services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
+
+  networking.firewall.enable = true;
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
