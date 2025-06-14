@@ -7,6 +7,7 @@
     ./modules/hypr/wallpaper.nix
     ./modules/kitty/kitty.nix
     ./modules/neovim/neovim.nix
+    ./modules/tmux/tmux.nix
   ];
 
   home.username = "tdmunnik";
