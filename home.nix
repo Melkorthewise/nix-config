@@ -66,7 +66,6 @@
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;
-  xdg.configFile."~/.tmux.conf".source = ./modules/tmux/tmux.conf;
 
   home.stateVersion = "24.11";
 }
