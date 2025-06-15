@@ -61,6 +61,8 @@
 
     nodejs
 
+    insomnia
+
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono

@@ -205,7 +205,19 @@ require('lazy').setup({
     },
   },
 
-  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', -- for file icons
+    },
+    config = function()
+      require("nvim-tree").setup {}
+
+      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle File [E]xplorer' })
+    end
+  },
+
+    -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
   -- lazy loading plugins that don't need to be loaded immediately at startup.
@@ -580,7 +592,10 @@ require('lazy').setup({
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      -- local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
+      local capabilities = vim.tbl_deep_extend("force", {}, cmp_capabilities, blink_capabilities)
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -697,6 +712,87 @@ require('lazy').setup({
       },
     },
   },
+
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets',
+    },
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+  
+      require('luasnip.loaders.from_vscode').lazy_load()
+  
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+  
+        mapping = {
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+  
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+  
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() and cmp.get_selected_entry() then
+              cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+  
+          ['<Esc>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.abort()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+  
+          ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+          ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        },
+  
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        }, {
+          { name = 'buffer' },
+        }),
+  
+        completion = {
+          completeopt = 'menu,menuone,noinsert',
+        },
+      })
+    end,
+  },
+
 
   { -- Autocompletion
     'saghen/blink.cmp',

@@ -32,6 +32,10 @@
 
   programs.hyprland.enable = true;
 
+  programs.git.config = {
+    init.defaultBranch = "main";
+  };
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "amdgpu" ];
