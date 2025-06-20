@@ -206,6 +206,19 @@ require('lazy').setup({
   },
 
   {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      signs = true,
+
+      highlight = {
+        multiline = true,
+        multiline_pattern = '^.',
+      }
+    }
+  },
+
+  {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- for file icons

@@ -56,6 +56,7 @@
     obsidian
     spotify
     discord
+    vscode
 
     libreoffice
 

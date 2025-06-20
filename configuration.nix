@@ -65,6 +65,7 @@
     unzip
     python3
     ripgrep
+    lua-language-server
 
     zenBrowser.packages."${system}".default
   ];
