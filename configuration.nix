@@ -6,15 +6,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "Marvin";
-  networking.networkmanager.enable = true;
   time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   users.users.tdmunnik = {
     isNormalUser = true;
     description = "Thomas de Munnik";
-    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" "dialout" ];
   };
 
   fileSystems."/" = {
@@ -41,7 +39,7 @@
     videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
-      options = "compose:win,caps:escape";
+      options = "compose:lwin,caps:escape";
     };
   };
 
@@ -66,6 +64,9 @@
     python3
     ripgrep
     lua-language-server
+    nautilus
+    arduino-cli
+    arduino-ide
 
     zenBrowser.packages."${system}".default
   ];
@@ -76,7 +77,13 @@
   services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
-  networking.firewall.enable = true;
+  networking.hostName = "Marvin";
+  networking.networkmanager.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 5173 ];
+  };
+
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;

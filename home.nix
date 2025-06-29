@@ -50,15 +50,19 @@
     waybar
     hyprpaper
     pavucontrol
+
     docker
-    docker-compose 
-    
+    docker-compose
+
     obsidian
     spotify
     discord
     vscode
 
     libreoffice
+
+    obs-studio
+    vlc
 
     nodejs
 
