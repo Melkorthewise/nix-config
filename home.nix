@@ -51,6 +51,8 @@
     hyprpaper
     pavucontrol
 
+    ghostty
+
     docker
     docker-compose
 
@@ -60,9 +62,6 @@
     vscode
 
     libreoffice
-
-    obs-studio
-    vlc
 
     nodejs
 

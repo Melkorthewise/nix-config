@@ -59,9 +59,21 @@
     docker
     docker-compose
     networkmanager
-    gcc
     unzip
+
     python3
+    gcc
+    cmake
+    clang
+    gdb
+    ninja
+    rustc
+    cargo
+    rust-analyzer
+    clippy
+    rustfmt
+    go
+    
     ripgrep
     lua-language-server
     nautilus
