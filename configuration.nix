@@ -12,7 +12,7 @@
   users.users.tdmunnik = {
     isNormalUser = true;
     description = "Thomas de Munnik";
-    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" "dialout" ];
+    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" "dialout" "libvirtd" "kvm" ];
   };
 
   fileSystems."/" = {
@@ -45,6 +45,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    git-lfs
     neovim
     wget
     hyprland
@@ -61,7 +62,6 @@
     networkmanager
     unzip
 
-    python3
     gcc
     cmake
     clang
@@ -84,10 +84,19 @@
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  programs.virt-manager.enable = true;
 
   # services.displayManager.sddm.enable = true;
   services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 
   networking.hostName = "Marvin";
   networking.networkmanager.enable = true;
@@ -96,6 +105,15 @@
     allowedTCPPorts = [ 5173 ];
   };
 
+  hardware.graphics = {
+    enable = true;
+    driSupport32Bit = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;

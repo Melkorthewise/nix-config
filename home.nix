@@ -51,19 +51,21 @@
     hyprpaper
     pavucontrol
 
-    ghostty
-
     docker
     docker-compose
+    virt-manager
 
     obsidian
     spotify
     discord
-    vscode
+    steam
+    heroic
 
     libreoffice
 
     nodejs
+    python3
+    python3Packages.pip
 
     insomnia
 
@@ -73,6 +75,8 @@
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;
+
+  xdg.configFile."virt-manager.conf".text = ''...''; # Optional customization
 
   home.stateVersion = "24.11";
 }
