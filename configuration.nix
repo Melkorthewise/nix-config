@@ -39,7 +39,7 @@
     videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
-      options = "compose:lwin,caps:escape";
+      # options = "compose:lwin,caps:escape";
     };
   };
 
@@ -95,7 +95,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns4 = true;
+    nssmdns = true;
   };
 
   networking.hostName = "Marvin";
@@ -105,7 +105,7 @@
     allowedTCPPorts = [ 5173 ];
   };
 
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
   };
