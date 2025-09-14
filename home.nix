@@ -53,15 +53,13 @@
 
     docker
     docker-compose
-    virt-manager
+    # virt-manager
 
     obsidian
     spotify
     discord
     steam
     heroic
-
-    libreoffice
 
     nodejs
     python3

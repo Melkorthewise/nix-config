@@ -79,6 +79,7 @@
     nautilus
     arduino-cli
     arduino-ide
+    transmission_3
 
     zenBrowser.packages."${system}".default
   ];
@@ -95,7 +96,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
 
   networking.hostName = "Marvin";
@@ -105,9 +106,9 @@
     allowedTCPPorts = [ 5173 ];
   };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
+  hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
   };
 
   programs.steam = {
