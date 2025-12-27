@@ -53,19 +53,24 @@
 
     docker
     docker-compose
+    rpi-imager
     # virt-manager
 
     obsidian
+    onlyoffice-bin
     spotify
     discord
     steam
     heroic
+    prismlauncher # Minecraft
 
     nodejs
     python3
     python3Packages.pip
 
     insomnia
+    thonny
+    zoom-us
 
     # Fonts
     nerd-fonts.fira-code

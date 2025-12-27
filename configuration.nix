@@ -99,6 +99,8 @@
     nssmdns4 = true;
   };
 
+  services.udisks2.enable = true;
+
   networking.hostName = "Marvin";
   networking.networkmanager.enable = true;
   networking.firewall = {
