@@ -75,6 +75,8 @@
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
+
+    cryptsetup
   ];
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;

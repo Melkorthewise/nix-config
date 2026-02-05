@@ -14,7 +14,7 @@ in
       preload = [ fullPath ];
       wallpaper = [
         "eDP-1,${fullPath}"
-        "DP-1,${fullPath}"
+        "DP-3,${fullPath}"
         "HDMI-A-1,${fullPath}"
       ];
       splash = false;

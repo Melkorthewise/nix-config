@@ -15,15 +15,15 @@
     extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" "dialout" "libvirtd" "kvm" ];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ffb57168-8310-455c-9094-c06829a95746";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7B06-C2B4";
-    fsType = "vfat";
-  };
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-uuid/ffb57168-8310-455c-9094-c06829a95746";
+  #   fsType = "ext4";
+  # };
+  #
+  # fileSystems."/boot" = {
+  #   device = "/dev/disk/by-uuid/7B06-C2B4";
+  #   fsType = "vfat";
+  # };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,7 +36,7 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "intel" ];
     xkb = {
       layout = "us";
       # options = "compose:lwin,caps:escape";
@@ -108,10 +108,10 @@
     allowedTCPPorts = [ 5173 ];
   };
 
-  hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-  };
+  # hardware.graphics = {
+  #     enable = true;
+  #     enable32Bit = true;
+  # };
 
   programs.steam = {
     enable = true;
