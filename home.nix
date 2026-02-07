@@ -67,6 +67,7 @@
     nodejs
     python3
     python3Packages.pip
+    processing
 
     insomnia
     thonny
@@ -78,6 +79,19 @@
 
     cryptsetup
   ];
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+  };
 
   xdg.configFile."wofi/style.css".source = ./modules/wofi/style.css;
 

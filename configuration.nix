@@ -56,10 +56,13 @@
     wofi
     hyprpaper
     hyprlock
+    hyprshot
+    bibata-cursors
     playerctl
     docker
     docker-compose
     networkmanager
+    dunst
     unzip
 
     gcc
@@ -80,6 +83,8 @@
     arduino-cli
     arduino-ide
     transmission_3
+    keyd
+    wev
 
     zenBrowser.packages."${system}".default
   ];
@@ -100,6 +105,19 @@
   };
 
   services.udisks2.enable = true;
+
+  services.keyd = { # For rewriting Copilot button
+    enable = true;
+
+    keyboards.copilot = {
+      ids = [ "0001:0001:700355d0" ];
+      settings = {
+        main = {
+          f23 = "rightmeta";
+        };
+      };
+    };
+  };
 
   networking.hostName = "Marvin";
   networking.networkmanager.enable = true;

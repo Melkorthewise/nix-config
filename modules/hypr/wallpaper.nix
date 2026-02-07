@@ -15,6 +15,7 @@ in
       wallpaper = [
         "eDP-1,${fullPath}"
         "DP-3,${fullPath}"
+        "DP-1,${fullPath}"
         "HDMI-A-1,${fullPath}"
       ];
       splash = false;

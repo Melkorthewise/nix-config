@@ -40,7 +40,6 @@
           # Pass inputs as extra arguments to modules
           specialArgs = {
             zenBrowser = zen-browser;
-            pkgs = pkgs;
             system = system;
           };
         };
