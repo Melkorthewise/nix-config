@@ -4,19 +4,17 @@
 
 let
   wallpaperPath = "/home/tdmunnik/nix-config/modules/backgrounds";
-  wallpaperFile = "armand-serrano-noahsark.jpg";
-  fullPath = "${wallpaperPath}/${wallpaperFile}";
+  wallpapers = builtins.attrNames (builtins.readDir wallpaperPath);
+  fullPaths = map (f: "${wallpaperPath}/${f}") wallpapers;
 in
 {
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ fullPath ];
+      preload = [ "/home/tdmunnik/nix-config/modules/backgrounds/armand-serrano-noahsark.jpg" ];
       wallpaper = [
-        "eDP-1,${fullPath}"
-        "DP-3,${fullPath}"
-        "DP-1,${fullPath}"
-        "HDMI-A-1,${fullPath}"
+        "eDP-1,/home/tdmunnik/nix-config/modules/backgrounds/armand-serrano-noahsark.jpg"
+        "DP-1,/home/tdmunnik/nix-config/modules/backgrounds/armand-serrano-noahsark.jpg"
       ];
       splash = false;
     };

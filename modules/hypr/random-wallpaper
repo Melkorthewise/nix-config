@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+WALLDIR="/home/tdmunnik/nix-config/modules/backgrounds"
+SCRIPTDIR="$HOME/.config/hypr/scripts"
+INDEXFILE="$SCRIPTDIR/.wallpaper_index"
+
+# Make sure the directory exists
+mkdir -p "$SCRIPTDIR"
+
+# Create index file if missing
+if [ ! -f "$INDEXFILE" ]; then
+    echo 0 > "$INDEXFILE"
+fi
+
+# Get list of images
+IMAGES=("$WALLDIR"/*)
+TOTAL=${#IMAGES[@]}
+
+# Read current index
+IDX=$(cat "$INDEXFILE")
+IMG="${IMAGES[$IDX]}"
+
+echo "Setting wallpaper to: $IMG"
+
+# Preload and set wallpaper for each monitor
+hyprctl hyprpaper preload "$IMG"
+hyprctl hyprpaper wallpaper "eDP-1,$IMG"
+hyprctl hyprpaper wallpaper "DP-1,$IMG"
+
+# Increment index
+IDX=$(( (IDX + 1) % TOTAL ))
+echo $IDX > "$INDEXFILE"

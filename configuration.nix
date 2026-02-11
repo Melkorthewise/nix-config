@@ -62,6 +62,7 @@
     docker
     docker-compose
     networkmanager
+    networkmanagerapplet
     dunst
     unzip
 
@@ -125,6 +126,7 @@
     enable = true;
     allowedTCPPorts = [ 5173 ];
   };
+  networking.networkmanager.wifi.powersave = true;
 
   # hardware.graphics = {
   #     enable = true;
@@ -136,7 +138,10 @@
     remotePlay.openFirewall = true;
   };
 
+  services.upower.enable = true;
+  services.dbus.enable = true;
   hardware.bluetooth.enable = true;
+
   services.blueman.enable = true;
 
   system.stateVersion = "24.11";

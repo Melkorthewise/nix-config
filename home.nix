@@ -51,6 +51,8 @@
     hyprpaper
     pavucontrol
 
+    vscode
+
     docker
     docker-compose
     rpi-imager
